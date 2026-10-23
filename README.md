@@ -1,5 +1,7 @@
 # Console de Segurança — Interfaces Web
 
+**🔗 Acesse ao vivo:** https://duhcastro222-rgb.github.io/console-seguranca-html-js/
+
 Um console web que reúne, em um só lugar, as telas das seis aplicações de segurança desenvolvidas no semestre. Feito em **HTML, CSS e JavaScript puro**, sem framework e sem build: basta abrir o `index.html` no navegador.
 
 ## Painéis
