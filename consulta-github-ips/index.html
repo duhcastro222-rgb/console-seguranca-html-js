@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub &amp; Reputação de IPs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/estilos.css" />
+</head>
+<body data-app="consulta-github-ips" data-depth="1">
+
+  <main class="pagina">
+    <section class="cabecalho-pagina">
+      <p class="eyebrow">atividade_requests · consumo de APIs</p>
+      <h1>GitHub &amp; reputação de IPs</h1>
+      <p>
+        Dois consumidores de API em uma tela: perfis do GitHub e triagem de
+        reputação de endereços IP. Aqui as respostas são simuladas; a estrutura
+        já reflete o JSON que as APIs devolvem.
+      </p>
+    </section>
+
+    <section class="painel">
+      <div class="painel__titulo"><h2>Consulta de perfil no GitHub</h2></div>
+      <form id="form-consulta-github">
+        <div class="barra-controles" style="margin-bottom:0;">
+          <div class="campo">
+            <label for="campo-github">Usuário</label>
+            <input type="text" id="campo-github" placeholder="ex.: torvalds, gvanrossum, octocat" />
+          </div>
+          <button type="submit" class="btn btn--primario">Consultar</button>
+        </div>
+        <div class="mensagem" id="mensagem-github" role="status"></div>
+      </form>
+
+      <div id="cartao-usuario" class="painel esconder" style="background:var(--panel-2); margin-top:18px;">
+        <div class="painel__titulo" style="margin-bottom:12px;">
+          <h3 id="gh-nome">—</h3>
+          <span class="badge badge--info" id="gh-login">—</span>
+        </div>
+        <div class="estatisticas" style="margin-bottom:0;">
+          <div class="tile"><div class="tile__valor dado" id="gh-repos">0</div><div class="tile__rotulo">repositórios públicos</div></div>
+          <div class="tile"><div class="tile__valor dado" id="gh-seguidores">0</div><div class="tile__rotulo">seguidores</div></div>
+          <div class="tile" style="grid-column:span 2;"><div class="tile__valor" style="font-size:1.1rem;" id="gh-local">—</div><div class="tile__rotulo">localização</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="painel">
+      <div class="painel__titulo">
+        <div>
+          <h2>Reputação de IPs</h2>
+          <p>Triagem por nível de risco, como no verificador de <span class="dado">ip-api</span>.</p>
+        </div>
+      </div>
+
+      <div class="barra-controles">
+        <div class="campo" style="flex:0 0 auto;">
+          <label for="filtro-risco">Nível de risco</label>
+          <select id="filtro-risco">
+            <option value="todos">Todos</option>
+            <option value="ALTO">Alto</option>
+            <option value="MEDIO">Médio</option>
+            <option value="BAIXO">Baixo</option>
+            <option value="INVALIDO">Inválido</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tabela-wrap">
+        <table class="tabela" id="tabela-ips">
+          <thead>
+            <tr><th>IP</th><th>País</th><th>Provedor</th><th>Risco</th><th>Motivo</th></tr>
+          </thead>
+          <tbody id="corpo-ips"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/componentes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

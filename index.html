@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Console de Segurança — Painéis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/estilos.css" />
+</head>
+<body data-app="index" data-depth="0">
+
+  <main class="pagina">
+    <section class="cabecalho-pagina">
+      <p class="eyebrow">Semestre 2 · Desenvolvimento e Codificação para Segurança</p>
+      <h1>Um console para as seis aplicações do semestre</h1>
+      <p>
+        Cada projeto virou um painel web. Todos falam a mesma língua visual — a
+        escala de severidade e o mesmo padrão de tabela e formulário — e por
+        enquanto rodam com dados simulados no próprio navegador. Os IDs dos
+        elementos já estão nomeados pensando no <span class="dado">fetch()</span>
+        da próxima etapa.
+      </p>
+    </section>
+
+    <div class="estatisticas">
+      <div class="tile tile--sinal">
+        <div class="tile__valor">6</div>
+        <div class="tile__rotulo">painéis publicados</div>
+      </div>
+      <div class="tile tile--baixa">
+        <div class="tile__valor">2</div>
+        <div class="tile__rotulo">bancos por trás (MySQL · MongoDB)</div>
+      </div>
+      <div class="tile tile--media">
+        <div class="tile__valor">4</div>
+        <div class="tile__rotulo">níveis de severidade padronizados</div>
+      </div>
+      <div class="tile tile--alta">
+        <div class="tile__valor">100%</div>
+        <div class="tile__rotulo">componentes reaproveitados</div>
+      </div>
+    </div>
+
+    <section class="grade" id="grade-paineis" aria-label="Lista de painéis">
+      <a class="cartao-link" href="agrosentinela/index.html">
+        <span class="cartao-link__indice">Pronova.py · 04 ago</span>
+        <h3>AgroSentinela</h3>
+        <p>Telemetria de drones e sensores de campo, classificada por severidade a cada turno.</p>
+        <div class="cartao-link__tags">
+          <span class="badge badge--info">telemetria</span>
+          <span class="badge badge--critica">severidade</span>
+        </div>
+        <span class="cartao-link__seta">Abrir painel →</span>
+      </a>
+
+      <a class="cartao-link" href="login-tentativas/index.html">
+        <span class="cartao-link__indice">tarefa1.py · 13 ago</span>
+        <h3>Tentativas de Login</h3>
+        <p>Autenticação com validação de senha forte e registro de cada tentativa.</p>
+        <div class="cartao-link__tags">
+          <span class="badge badge--info">autenticação</span>
+          <span class="badge badge--media">validação</span>
+        </div>
+        <span class="cartao-link__seta">Abrir painel →</span>
+      </a>
+
+      <a class="cartao-link" href="monitor-sockets/index.html">
+        <span class="cartao-link__indice">atividade_sockets · 20 ago</span>
+        <h3>Monitor de Sockets</h3>
+        <p>Alertas de segurança por TCP e heartbeats de sensores por UDP, em tempo real.</p>
+        <div class="cartao-link__tags">
+          <span class="badge badge--info">TCP / UDP</span>
+          <span class="badge badge--ok">monitoramento</span>
+        </div>
+        <span class="cartao-link__seta">Abrir painel →</span>
+      </a>
+
+      <a class="cartao-link" href="consulta-github-ips/index.html">
+        <span class="cartao-link__indice">atividade_requests · 20 ago</span>
+        <h3>GitHub &amp; Reputação de IPs</h3>
+        <p>Consulta de perfis do GitHub e triagem de reputação de endereços IP via API.</p>
+        <div class="cartao-link__tags">
+          <span class="badge badge--info">requests</span>
+          <span class="badge badge--alta">reputação</span>
+        </div>
+        <span class="cartao-link__seta">Abrir painel →</span>
+      </a>
+
+      <a class="cartao-link" href="eventos-login-crud/index.html">
+        <span class="cartao-link__indice">eventos_login_crud.py · 03 set</span>
+        <h3>Eventos de Login (CRUD)</h3>
+        <p>CRUD seguro de eventos de autenticação com IP hasheado e detecção de anomalia.</p>
+        <div class="cartao-link__tags">
+          <span class="badge badge--info">MySQL</span>
+          <span class="badge badge--critica">anomalia</span>
+        </div>
+        <span class="cartao-link__seta">Abrir painel →</span>
+      </a>
+
+      <a class="cartao-link" href="vulnerabilidades-quasecp/index.html">
+        <span class="cartao-link__indice">quasecpBD · 21 set</span>
+        <h3>Ativos &amp; Vulnerabilidades</h3>
+        <p>Inventário de ativos (MySQL) cruzado com vulnerabilidades (MongoDB) e quarentena automática.</p>
+        <div class="cartao-link__tags">
+          <span class="badge badge--info">MySQL + Mongo</span>
+          <span class="badge badge--critica">CVE</span>
+        </div>
+        <span class="cartao-link__seta">Abrir painel →</span>
+      </a>
+    </section>
+  </main>
+
+  <script src="assets/componentes.js"></script>
+</body>
+</html>

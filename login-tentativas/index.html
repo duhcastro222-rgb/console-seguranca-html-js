@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Tentativas de acesso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/estilos.css" />
+</head>
+<body data-app="login-tentativas" data-depth="1">
+
+  <main class="pagina">
+    <section class="cabecalho-pagina">
+      <p class="eyebrow">tarefa1.py · autenticação</p>
+      <h1>Acesso ao painel</h1>
+      <p>
+        Autentique-se contra a base de usuários. A senha é avaliada em tempo
+        real (forte = 8 caracteres ou mais) e cada tentativa entra no registro
+        de auditoria abaixo, com sucesso ou falha.
+      </p>
+    </section>
+
+    <div class="grade">
+      <section class="painel">
+        <div class="painel__titulo"><h2>Entrar</h2></div>
+
+        <form id="form-login" novalidate>
+          <div class="campo">
+            <label for="campo-usuario">Usuário</label>
+            <input type="text" id="campo-usuario" name="usuario" autocomplete="username" placeholder="ex.: leide" required />
+          </div>
+
+          <div class="campo" style="margin-top:16px;">
+            <label for="campo-senha">Senha</label>
+            <input type="password" id="campo-senha" name="senha" autocomplete="current-password" placeholder="sua senha" required />
+            <div class="medidor"><div class="medidor__preenchido" id="medidor-barra"></div></div>
+            <div class="medidor__texto" id="medidor-senha">Digite a senha para avaliar a força.</div>
+          </div>
+
+          <button type="submit" class="btn btn--primario" style="margin-top:18px;">Entrar</button>
+          <div class="mensagem" id="mensagem-login" role="status"></div>
+        </form>
+
+        <p class="txt-muted" style="font-size:0.8rem; margin-top:18px;">
+          Base de teste: <span class="dado">admin</span>, <span class="dado">leide</span>,
+          <span class="dado">root</span>, <span class="dado">carla</span>.
+        </p>
+      </section>
+
+      <section class="painel">
+        <div class="painel__titulo">
+          <div>
+            <h2>Registro de tentativas</h2>
+            <p>Auditoria da sessão · <span id="contador-tentativas" class="dado">0</span> tentativa(s).</p>
+          </div>
+        </div>
+        <div class="tabela-wrap">
+          <table class="tabela" id="tabela-tentativas">
+            <thead>
+              <tr><th>Usuário</th><th>IP</th><th>Resultado</th><th>Horário</th></tr>
+            </thead>
+            <tbody id="corpo-tentativas"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../assets/componentes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

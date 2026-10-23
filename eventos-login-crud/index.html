@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos de Login — CRUD seguro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/estilos.css" />
+</head>
+<body data-app="eventos-login-crud" data-depth="1">
+
+  <main class="pagina">
+    <section class="cabecalho-pagina">
+      <p class="eyebrow">eventos_login_crud.py · MySQL</p>
+      <h1>Eventos de login</h1>
+      <p>
+        Registro auditável de tentativas de autenticação. O IP aparece como
+        hash (nunca em texto puro) e o painel dispara um alerta quando um mesmo
+        IP acumula falhas acima do limiar.
+      </p>
+    </section>
+
+    <div class="mensagem mensagem--alerta" id="alerta-anomalia" role="alert" style="margin-top:0;margin-bottom:24px;"></div>
+
+    <section class="painel">
+      <div class="painel__titulo"><h2>Registrar evento</h2></div>
+      <form id="form-evento">
+        <div class="form-grade">
+          <div class="campo">
+            <label for="evento-usuario">Usuário</label>
+            <input type="text" id="evento-usuario" placeholder="ex.: analista01" required />
+          </div>
+          <div class="campo">
+            <label for="evento-ip">IP de origem</label>
+            <input type="text" id="evento-ip" placeholder="ex.: 10.0.0.42" required />
+          </div>
+          <div class="campo">
+            <label for="evento-status">Status</label>
+            <select id="evento-status">
+              <option value="sucesso">Sucesso</option>
+              <option value="falha">Falha</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </div>
+          <div class="campo" style="justify-content:flex-end;">
+            <button type="submit" class="btn btn--primario">Registrar evento</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="painel">
+      <div class="painel__titulo">
+        <div>
+          <h2>Eventos registrados</h2>
+          <p><span id="contador-eventos" class="dado">0</span> evento(s) · IP exibido como hash SHA-256 (8 primeiros dígitos).</p>
+        </div>
+      </div>
+
+      <div class="barra-controles">
+        <div class="campo">
+          <label for="busca-usuario">Buscar por usuário</label>
+          <input type="search" id="busca-usuario" placeholder="ex.: analista02" />
+        </div>
+        <div class="campo" style="flex:0 0 auto;">
+          <label for="filtro-status">Status</label>
+          <select id="filtro-status">
+            <option value="todos">Todos</option>
+            <option value="sucesso">Sucesso</option>
+            <option value="falha">Falha</option>
+            <option value="bloqueado">Bloqueado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tabela-wrap">
+        <table class="tabela" id="tabela-eventos-login">
+          <thead>
+            <tr><th>ID</th><th>Usuário</th><th>IP (hash)</th><th>Status</th><th class="col-num">Tentativas</th><th>Data/hora</th><th></th></tr>
+          </thead>
+          <tbody id="corpo-eventos-login"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/componentes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

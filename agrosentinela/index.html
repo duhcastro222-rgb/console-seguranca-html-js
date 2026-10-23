@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroSentinela — Telemetria do turno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/estilos.css" />
+</head>
+<body data-app="agrosentinela" data-depth="1">
+
+  <main class="pagina">
+    <section class="cabecalho-pagina">
+      <p class="eyebrow">Pronova.py · telemetria de campo</p>
+      <h1>AgroSentinela — eventos do turno</h1>
+      <p>
+        Cada linha de telemetria enviada por drones e sensores é classificada
+        automaticamente por severidade. Spoofing e acesso não autorizado sobem
+        de Média para Alta, como no motor original.
+      </p>
+    </section>
+
+    <div class="estatisticas" id="estatisticas-severidade">
+      <div class="tile tile--sinal"><div class="tile__valor" id="stat-total">0</div><div class="tile__rotulo">eventos no turno</div></div>
+      <div class="tile tile--baixa"><div class="tile__valor" id="stat-baixa">0</div><div class="tile__rotulo">Baixa</div></div>
+      <div class="tile tile--media"><div class="tile__valor" id="stat-media">0</div><div class="tile__rotulo">Média</div></div>
+      <div class="tile tile--alta"><div class="tile__valor" id="stat-alta">0</div><div class="tile__rotulo">Alta</div></div>
+      <div class="tile tile--critica"><div class="tile__valor" id="stat-critica">0</div><div class="tile__rotulo">Crítica</div></div>
+    </div>
+
+    <section class="painel">
+      <div class="painel__titulo">
+        <div>
+          <h2>Registro de eventos</h2>
+          <p>Filtre por severidade ou busque por tipo, drone ou ID.</p>
+        </div>
+      </div>
+
+      <div class="barra-controles">
+        <div class="campo">
+          <label for="busca-evento">Buscar</label>
+          <input type="search" id="busca-evento" placeholder="ex.: spoofing, DRONE-02, EV-1004" />
+        </div>
+        <div class="campo">
+          <label for="filtro-severidade">Severidade</label>
+          <select id="filtro-severidade">
+            <option value="todas">Todas</option>
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+            <option value="critica">Crítica</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tabela-wrap">
+        <table class="tabela" id="tabela-eventos">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Origem</th>
+              <th>Tipo de evento</th>
+              <th class="col-num">Intensidade</th>
+              <th>Severidade</th>
+              <th>Horário</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-eventos"><!-- preenchido por app.js --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/componentes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

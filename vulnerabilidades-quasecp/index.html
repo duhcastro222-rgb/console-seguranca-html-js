@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ativos &amp; Vulnerabilidades — quasecpBD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/estilos.css" />
+</head>
+<body data-app="vulnerabilidades-quasecp" data-depth="1">
+
+  <main class="pagina">
+    <section class="cabecalho-pagina">
+      <p class="eyebrow">quasecpBD · MySQL + MongoDB</p>
+      <h1>Ativos &amp; vulnerabilidades</h1>
+      <p>
+        Inventário de ativos (tabela relacional) cruzado com vulnerabilidades
+        (documentos). O elo é o nome do ativo. A quarentena automática marca
+        como crítico todo ativo com falha aberta e CVSS acima de 9,0.
+      </p>
+    </section>
+
+    <div class="estatisticas">
+      <div class="tile tile--sinal"><div class="tile__valor" id="stat-ativos">0</div><div class="tile__rotulo">ativos monitorados</div></div>
+      <div class="tile tile--critica"><div class="tile__valor" id="stat-vulns">0</div><div class="tile__rotulo">vulnerabilidades</div></div>
+      <div class="tile tile--alta"><div class="tile__valor" id="stat-abertas">0</div><div class="tile__rotulo">abertas</div></div>
+      <div class="tile tile--media"><div class="tile__valor" id="stat-quarentena">0</div><div class="tile__rotulo">em quarentena</div></div>
+    </div>
+
+    <section class="painel">
+      <div class="painel__titulo">
+        <div>
+          <h2>Inventário de ativos</h2>
+          <p>Origem MySQL · status do patch por ativo.</p>
+        </div>
+        <button type="button" class="btn btn--primario btn--mini" id="btn-quarentena">Rodar quarentena automática</button>
+      </div>
+      <div class="mensagem mensagem--alerta" id="msg-quarentena" role="status"></div>
+      <div class="tabela-wrap" style="margin-top:14px;">
+        <table class="tabela" id="tabela-ativos">
+          <thead>
+            <tr><th>Ativo</th><th>Tipo</th><th>Setor</th><th>IP interno</th><th>Status do patch</th></tr>
+          </thead>
+          <tbody id="corpo-ativos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="painel">
+      <div class="painel__titulo">
+        <div>
+          <h2>Vulnerabilidades</h2>
+          <p>Origem MongoDB · filtre por severidade, status ou ativo.</p>
+        </div>
+      </div>
+
+      <div class="barra-controles">
+        <div class="campo" style="flex:0 0 auto;">
+          <label for="filtro-severidade">Severidade</label>
+          <select id="filtro-severidade">
+            <option value="todas">Todas</option>
+            <option value="critica">Crítica</option>
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+          </select>
+        </div>
+        <div class="campo" style="flex:0 0 auto;">
+          <label for="filtro-status-vuln">Status</label>
+          <select id="filtro-status-vuln">
+            <option value="todos">Todos</option>
+            <option value="aberta">Aberta</option>
+            <option value="em_correcao">Em correção</option>
+            <option value="corrigida">Corrigida</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="filtro-ativo">Ativo relacionado</label>
+          <select id="filtro-ativo"><option value="todos">Todos os ativos</option></select>
+        </div>
+      </div>
+
+      <div class="grade" id="lista-vulnerabilidades"></div>
+    </section>
+  </main>
+
+  <script src="../assets/componentes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
